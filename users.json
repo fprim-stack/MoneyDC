@@ -1,0 +1,40 @@
+{
+  "946865197757399040": {
+    "money": 0,
+    "xp": 17,
+    "level": 1,
+    "inventory": {
+      "Phoenix Feather": 1
+    },
+    "last_daily": 1755828384,
+    "bank": 0,
+    "achievements": [],
+    "luck": 800,
+    "money_boost": 2.25,
+    "prestige": 2
+  },
+  "1228739992134750208": {
+    "money": 100099844194,
+    "xp": 138,
+    "level": 2,
+    "inventory": {},
+    "last_daily": 0,
+    "bank": 0,
+    "achievements": [],
+    "luck": 0,
+    "money_boost": 0,
+    "prestige": 0
+  },
+  "1252048051527352391": {
+    "money": 100,
+    "xp": 4,
+    "level": 1,
+    "inventory": {},
+    "last_daily": 0,
+    "bank": 0,
+    "achievements": [],
+    "luck": 0,
+    "money_boost": 0,
+    "prestige": 0
+  }
+}

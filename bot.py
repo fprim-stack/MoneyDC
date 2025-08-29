@@ -667,6 +667,67 @@ async def shop(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
+async def topnumbers(ctx):
+    """Show the top 3 most frequently picked winning numbers"""
+    try:
+        # Load the win.json data
+        if not os.path.exists('win.json'):
+            embed = discord.Embed(
+                title="📊 Lottery Statistics",
+                description="No lottery data available yet!\nPlay some lottery games first with `!lottery`",
+                color=discord.Color.orange()
+            )
+            await ctx.send(embed=embed)
+            return
+        
+        with open('win.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        if not data:
+            embed = discord.Embed(
+                title="📊 Lottery Statistics",
+                description="No lottery numbers have been recorded yet!\nPlay some lottery games first with `!lottery`",
+                color=discord.Color.orange()
+            )
+            await ctx.send(embed=embed)
+            return
+        
+        # Sort numbers by count (descending)
+        sorted_numbers = sorted(data.items(), key=lambda x: x[1]['count'], reverse=True)
+        
+        # Get top 3
+        top_3 = sorted_numbers[:3]
+        
+        # Create embed
+        embed = discord.Embed(
+            title="🎰 Top 3 Most Frequent Winning Numbers",
+            description="These numbers have appeared most often in lottery draws:",
+            color=discord.Color.gold()
+        )
+        
+        for i, (number, info) in enumerate(top_3, 1):
+            count = info['count']
+            embed.add_field(
+                name=f"#{i} - Number {number}",
+                value=f"Appeared **{count}** time{'s' if count != 1 else ''}",
+                inline=False
+            )
+        
+        # Add total games played
+        total_games = sum(info['count'] for info in data.values())
+        embed.set_footer(text=f"Total lottery games played: {total_games}")
+        
+        await ctx.send(embed=embed)
+        
+    except Exception as e:
+        embed = discord.Embed(
+            title="❌ Error",
+            description=f"An error occurred while loading lottery statistics: {str(e)}",
+            color=discord.Color.red()
+        )
+        await ctx.send(embed=embed)
+
+@bot.command()
 async def help(ctx):
     """Show all available commands"""
     embed = discord.Embed(

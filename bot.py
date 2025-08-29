@@ -1,4 +1,4 @@
-
+9
 from threading import Thread
 from discord.ext import commands
 import discord
@@ -1548,7 +1548,7 @@ async def prestige(ctx):
     prestige_level = user_data.get("prestige", 0)
 
     # exponential requirement (10M * 10^prestige)
-    required = 10_000_000 * (10 ** prestige_level)
+    required = 10_000_000 * (20 ** prestige_level)
 
     if user_data["money"] < required:
         await ctx.send(

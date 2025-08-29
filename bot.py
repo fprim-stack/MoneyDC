@@ -2855,6 +2855,6 @@ async def givecoins(ctx, user_id: int, amount: int):
     embed.set_footer(text=f"Requested by {ctx.author}", icon_url=ctx.author.display_avatar.url)
 
     await ctx.send(embed=embed)
-
+TOKEN = os.getenv("DISCORD_TOKEN")
 if __name__ == "__main__":   # 👈 prevents duplicate runs
-    bot.run("MTQwODIxNzI0MTcyMzQ3Mzk2MA.GxCXXW.oB14kJVLpwzgzHPZpM1skpPOeOFxTGHNKeZZSY")
+    bot.run("TOKEN")
